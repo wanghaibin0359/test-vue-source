@@ -1,0 +1,159 @@
+js优化以及算法；
+排序算法；
+js基础，原型，设计模式；
+各种算法；
+抽奖页面，不依赖后台，前端怎么做到接口防刷；（记录手机号传递给服务器的次数，做判断，存取cookie）
+宏任务，微任务；css布局；原型链；继承；单页应用；webpack配置；vue双向绑定原理；
+http-proxy-middleware实现原理；
+this的问题；vue原理；
+跨域；同源协议；OSI四层协议；ajax实现过程；具体请求一段数据；
+比较前沿的技术；es6；vue；跨域；http；vue3.0的变化；（promise的api，all）
+http状态码（eg：304，504）；
+js基础；原型链；深浅拷贝；D3，canvas基础；vue双向绑定原理；vuex的使用；css居中；怪异盒子； 大领导===>性能优化；大数据调优；websocket相关问题（异常处理）；vue混入，怎么做；为什么用vue，vue有哪些优点；
+
+笔试题：js原型和闭包相关；写两个函数（用正则查找时间并替换；找数组最大值）；css优先级；查找DOM；问了repaint和reflow的区别；
+浏览器以及服务器安全的问题（回答https加密协议）
+
+问题一：vue1.0到vue2.0的变化？（顺带看下vue3.0的变化）；组件之间如何通信；
+问题二：webpack主要做了什么？怎么打包的？
+问题三：模块化是做什么的？模块化解决了什么问题？模块化有什么优点呢？
+问题四：对象的深浅拷贝以及如何继承原型链；
+问题五：function，object之间的关系，其实就是考原型链；
+
+例如处理10万数据，也就是数据量比较大的话怎么处理；(web workers:https://blog.csdn.net/huang100qi/article/details/89303555)
+
+js的知识；涉及闭包，多重继承；with的使用；ES6、ES7；
+
+跨域；函数柯里化；前后端分离；原生js动画；
+
+//后端问数据结构；算法如：堆排序；二分查找；快速排序；数组存储结构；
+
+模块化开发；框架；ES6的了解；行为和数据分离的理解；web语义化的理解；
+
+js写冒泡排序；array的函数；http协议（头部都包含哪些信息）；cookie-localStorage-sessionStorage；
+js逆序； js原生的简单动画；
+
+微博自动显示当前页头像，翻到哪里显示到哪里是如何做到的？（检测页面内人名，匹配图像）
+事件委托；
+问题：with  回答：改变作用域
+
+递归的问题怎么用非递归的方式实现？
+算法；数据结构；计算机网络；操作系统；数据库；
+问题：一个数组，写出三行代码，使得数组内给定值放到最前面。回答：数组变字符串，给定值分割，然后组合。
+
+链表；
+计算机安全和网络安全的知识；
+
+
+
+---------------------------------------------------------------------
+内存管理，网络通信，缓存
+对web安全，性能优化，监控，日志分析方法有一定的理解。
+异步编程，函数式编程；
+前端高并发？
+css瀑布流了解下
+ES6新特性说一下
+ES7里面的async await
+vue reject/provide
+vuex太重了，有什么 可以取代vuex的吗
+
+
+
+
+----------------------------------------------------------------------
+1、with语法
+    https://blog.csdn.net/zwkkkk1/article/details/79725934
+    with关键字的作用在于改变作用域
+    比如，目前现在有一个这样的对象：
+    var obj = {
+        a: 1,
+        b: 2,
+        c: 3
+    };
+    如果想要改变 obj 中每一项的值，一般写法可能会是这样：
+    // 重复写了3次的“obj”
+    obj.a = 2;
+    obj.b = 3;
+    obj.c = 4;
+    而用了 with 的写法，会有一个简单的快捷方式：
+    with (obj) {
+        a = 3;
+        b = 4;
+        c = 5;
+    }
+    在这段代码中，使用了 with 语句关联了 obj 对象，这就以为着在 with 代码块内部，每个变量首先被认为是一个局部变量，如果局部变量与 obj 对象的某个属性同名，则这个局部变量会指向 obj 对象属性。
+
+2、数组最大值
+    https://blog.csdn.net/yunchong_zhao/article/details/104454952
+3、微任务和宏任务
+    微任务位于宏任务当中，微任务比宏任务优先执行。
+    https://www.jianshu.com/p/a697e9bfdaef
+
+4、vue通信的全部方式
+    https://www.cnblogs.com/hspl/p/11002496.html
+5、单页面的优缺点
+    单页面的优点：
+        用户体验好，快，内容的改变不需要重新加载整个页面，基于这一点spa对服务器压力较小。
+        前后端分离。
+        页面效果会比较炫酷（比如切换页面内容时的专场动画）。
+    单页面缺点：
+        不利于seo。
+        导航不可用，如果一定要导航需要自行实现前进、后退。（由于是单页面不能用浏览器的前进后退功能，所以需要自己建立堆栈管理）。
+        初次加载时耗时多。
+        页面复杂度提高很多。
+6、冒泡、快速排序
+    var arr=[1,23,89,17,33,73,56,90,46]; //arr=[4,3,2,1]
+    //冒泡排序
+    function bubbleSort(arr){
+        if(arr.length<=1)return arr;
+        for(var k=0;k<arr.length-1;k++){
+          for(var n=0;n<arr.length-k-1;n++){
+            if(arr[n]>arr[n+1]){
+              arr[n+1] = [ arr[n],arr[n]=arr[n+1] ][0]
+            }
+        }
+    }
+    console.log(arr)
+    }
+    // bubbleSort(arr);
+
+   //快速排序
+    function quickSort(arr){
+        if(arr.length<=1){return arr}
+        var pivot = arr.splice( [Math.floor(arr.length/2)],1 )[0];
+        var left=[],right=[];
+        for(var k=0;k<arr.length;k++){
+          if(arr[k]<pivot){
+            left.push(arr[k])
+          }else{
+            right.push(arr[k])
+          }
+        }
+        // console.log(left,pivot,right)
+        return quickSort(left).concat(pivot,quickSort(right))
+    }
+   // quickSort(arr)
+   console.log( quickSort(arr) )
+7、css弹性布局
+    父元素设置 
+        display:flex;
+        flex-direction:row/row-reserse/column/column-reverse;   //排列方向
+        justify-content：flex-start/flex-end/center/space-between/space-around  //排列方式
+        align-items:flex-start/flex-end/center  //侧轴对齐
+        flex-wrap:nowrap(默认)/wrap/wrap-reverse(反向换行)    //换行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
