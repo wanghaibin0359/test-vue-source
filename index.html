@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p id="index">index:{{index}}</p>
+      <p>msg:{{msg}}</p>
+      <p>total:{{total}}</p>
+      <button v-on:click="change">改变</button>
+      <button v-on:click="change1">改变msg</button>
+    </div>
+  </body>
+  <script src="Vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: "#app",
+      data: {
+        index: "1",
+        html: "<p>alksjdfklsadjf</p>",
+        msg: "3",
+      },
+      computed: {
+        total() {
+          return this.index + "total";
+        },
+      },
+      methods: {
+        change() {
+          this.index = this.index + "1";
+          this.$nextTick(() => {
+            console.log(this.total);
+          });
+        },
+        change1() {
+          this.msg = this.msg + 1;
+        },
+      },
+      watch: {
+        index(val, old) {
+          console.log("change: index");
+        },
+      },
+    });
+  </script>
+</html>
